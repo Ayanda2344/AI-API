@@ -1,34 +1,31 @@
-let jokeButton = document.querySelector("#joke-btn");
-let jokeElement = document.querySelector("#joke");
+document.addEventListener("DOMContentLoaded", function () {
+  let jokeButton = document.querySelector("#joke-btn");
+  let jokeElement = document.querySelector("#joke");
 
-function generateJoke() {
-  let APIKey = "ad28f3a0557d8t5f574o89b184356e5a";
-  let context = "You are an AI that tells dad jokes";
-  let prompt = "Tell me a dad joke";
+  function generateJoke() {
+    let APIKey = "ad28f3a0557d8t5f574o89b184356e5a";
+    let context = "You are an AI that tells dad jokes";
+    let prompt = "Tell me a dad joke";
 
-  let apiURL = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${APIKey}`;
+    let apiURL = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${APIKey}`;
 
-  jokeElement.innerHTML = "😂 Generating a joke... please wait";
+    jokeElement.innerHTML = "😂 Generating a joke... please wait";
 
-  axios.get(apiURL)
-    .then(tellJoke)
-    .catch(function (error) {
-      jokeElement.innerHTML = "❌ Failed to fetch joke. Check console.";
-      console.error(error);
+    axios.get(apiURL)
+      .then(tellJoke)
+      .catch(function (error) {
+        jokeElement.innerHTML = "❌ Failed to fetch joke. Check console.";
+        console.error(error);
+      });
+  }
+
+  function tellJoke(response) {
+    jokeElement.innerHTML = "";
+    new Typewriter(jokeElement, {
+      strings: [response.data.answer],
+      autoStart: true,
     });
-}
+  }
 
-function tellJoke(response) {
-  // Clear old text before typewriter
-  jokeElement.innerHTML = "";
-
-  new Typewriter(jokeElement, {
-    strings: [response.data.answer],
-    autoStart: true,
-  });
-
-  console.log("Joke:", response.data.answer);
-}
-
-// Event listener
-jokeButton.addEventListener("click", generateJoke);
+  jokeButton.addEventListener("click", generateJoke);
+});
