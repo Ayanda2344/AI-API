@@ -9,7 +9,7 @@ let ButtonElement=document.querySelector("#btn");
 ButtonElement.addEventListener("click",handleclick);
 
 function showAnswer(response){
-    alert(response.data.answer);
+    console.log(response.data.answer);
 }
 
 
