@@ -27,5 +27,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  jokeButton.addEventListener("click", generateJoke);
+  jokeButtonElement.addEventListener("click", generateJoke);
 });
