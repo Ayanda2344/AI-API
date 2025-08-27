@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let jokeButton = document.querySelector("#joke-btn");
+  let jokeButtonElement = document.querySelector("#joke-btn");
   let jokeElement = document.querySelector("#joke");
 
   function generateJoke() {
