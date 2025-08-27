@@ -1,3 +1,13 @@
+function handleclick(){
+    alert("Button clicked");
+}
+
+
+
+
+let ButtonElement=document.querySelector("#btn");
+ButtonElement.addEventListener("click",handleclick);
+
 function showAnswer(response){
     alert(response.data.answer);
 }
